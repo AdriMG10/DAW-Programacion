@@ -2,7 +2,11 @@ package org.ieslosremedios.daw1.prog.ut3.actividad34;
 
 public class Impresora implements Imprimible, Borrable {            //3
 
-    String pagina = TEXTO_POR_DEFECTO;                              //3
+    private String pagina;                                          //3
+
+    Impresora() {
+        pagina = Imprimible.TEXTO_POR_DEFECTO;
+    }
 
     @Override
     public void imprime() {                                         //3
@@ -11,11 +15,11 @@ public class Impresora implements Imprimible, Borrable {            //3
 
     @Override
     public void establecerContenido(String establezcoContenido) {   //5
-            System.out.println(establezcoContenido);
+            pagina = establezcoContenido;
         }
 
     @Override
     public void borrar() {                                          //6
-        System.out.println("");
+        pagina = "";
     }
 }
