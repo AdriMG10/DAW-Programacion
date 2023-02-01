@@ -1,10 +1,12 @@
-package org.ieslosremedios.daw1.prog.ut4.actividad43;
+package org.ieslosremedios.daw1.prog.ut4.arrays.actividad43;
 
 import java.util.Arrays;
 
 public class Actividad43 {
     public static void main(String[] args) {
 
+        int [] arrayEj6 = {1, 2, 3};
+        int[][] arrayClonar = new int[4][];
 
         System.out.println("Apartado 1: ");
         int[] array = generarArrayAleatorio(10);
@@ -23,24 +25,24 @@ public class Actividad43 {
         System.out.println("Búsqueda binarySearch: " + Arrays.binarySearch(arrayOrdenado,55) + "\n");
 
         System.out.println("Apartado 5: ");
-        System.out.println("Los arrays son iguales: " + Arrays.equals(array, arrayOrdenado) + "\n");
+        System.out.println("Los arrays son iguales: " + compararArray(array, arrayOrdenado) + "\n");
 
         System.out.println("Apartado 6: ");
+
         System.out.println("Clone:");
-        int[] array2 = array.clone();
-        System.out.println(Arrays.toString(array));
-        System.out.println(Arrays.toString(array2) + "\n");
+        cloneArray(arrayEj6, arrayClonar);
 
         System.out.println("CopyOf:");
-        int[] array3 = Arrays.copyOf(array, 4);
-        System.out.println(Arrays.toString(array3) + "\n");
+        copyOfArray(arrayEj6, arrayClonar);
 
         System.out.println("CopyOfRange:");
-        int[] array4 = Arrays.copyOfRange(array, 4, 8);
-        System.out.println(Arrays.toString(array4) + "\n");
+        copyOfRangeArray(arrayEj6, arrayClonar);
 
         System.out.println("System.arraycopy:");
-        //System.arraycopy(array, 0, array2, 0, array.length);
+        systemArrayCopyArray(arrayEj6, arrayClonar);
+
+        System.out.println("Array completo: ");
+        imprimirArray4(arrayClonar);
     }
 
     private static int[] generarArrayAleatorio(int num) {
@@ -78,5 +80,38 @@ public class Actividad43 {
             }
         }
         return -1;
+    }
+
+    private static Boolean compararArray(int[] array1, int[] array2) {
+        return Arrays.equals(array1, array2);
+    }
+
+    private static void cloneArray(int[] array, int[][] arrayClon) {
+        arrayClon[0] = array.clone();
+        System.out.println(Arrays.toString(arrayClon[0]) + "\n");
+    }
+
+    private static void copyOfArray(int[] array, int[][] arrayClon) {
+
+        arrayClon[1] = Arrays.copyOf(array, 3);
+        System.out.println(Arrays.toString(arrayClon[1]) + "\n");
+    }
+
+    private static void copyOfRangeArray(int[] array, int[][] arrayClon) {
+
+        arrayClon[2] = Arrays.copyOfRange(array, 0, 3);
+        System.out.println(Arrays.toString(arrayClon[2]) + "\n");
+    }
+
+    private static void systemArrayCopyArray(int[] array, int[][] arrayClon) {
+
+        int[] array4 = new int[3];
+        System.arraycopy(array, 0, array4, 0, array.length);
+        arrayClon[3] = array4;
+        System.out.println(Arrays.toString(arrayClon[3]) + "\n");
+    }
+
+    private static void imprimirArray4(int[][] arrayClon) {
+        System.out.println(Arrays.toString(arrayClon[0]) + (Arrays.toString(arrayClon[1]) + (Arrays.toString(arrayClon[2]) + (Arrays.toString(arrayClon[3])))));
     }
 }
